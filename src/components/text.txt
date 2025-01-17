@@ -1,0 +1,118 @@
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router";
+import "./App.css";
+
+function App() {
+  const [value, setValue] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setValue({ ...value, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = {};
+    if (!value.name.trim()) {
+      validationErrors.name = "Name is required";
+    }
+    if (!value.email.trim()) {
+      validationErrors.email = "Email is required";
+    } else if (!value.email.includes("@") || !value.email.includes(".")) {
+      validationErrors.email = "Email is invalid";
+    }
+    if (!value.password.trim()) {
+      validationErrors.password = "Password is required";
+    } else if (value.password.length < 6) {
+      validationErrors.password = "Password must be at least 6 characters";
+    }
+    setErrors(validationErrors);
+    if (Object.keys(validationErrors).length > 0) {
+      console.log(validationErrors);
+      // return;
+    } else {
+      // console.log(value);
+      // reset
+      setValue({
+        name: "",
+        email: "",
+        password: "",
+      });
+    }
+  };
+
+  return (
+    <>
+      <div className="flex pt-10 md:flex-row flex-col-reverse justify-center items-center  text-black bg-white rounded-2xl w-fit ">
+        {/* left */}
+        <div className="h-full border-r shadow-sm rounded-r-3xl ">
+          <img src="./logo1.avif" alt="" />
+        </div>
+
+        {/* right */}
+        <div className=" text-center  w-8/12 h-full px-5">
+          <div className="flex justify-center items-center">
+            <img className="w-10 " src="./icon.png" alt="" />
+          </div>
+          <h1 className="text-3xl font-semibold mt-10 mb-2">Sign Up</h1>
+          <p className="text-sm text-gray-500 mb-8">
+            Please sign up to your details
+          </p>
+          <form action="" onSubmit={handleSubmit} className="space-y-2 ">
+            <div>
+              <input
+                type="text"
+                name="name"
+                value={value.name}
+                onChange={handleChange}
+                id=""
+                placeholder="Name"
+                className="border border-black rounded-md py-1 px-2 w-full text-white"
+              />
+              {errors.name && (
+                <p className="text-red-500 text-start">{errors.name}</p>
+              )}
+            </div>
+            <div>
+              <input
+                type="text"
+                name="email"
+                onChange={handleChange}
+                value={value.email}
+                id=""
+                placeholder="Email"
+                className="border border-black rounded-md py-1 px-2 w-full text-white"
+              />
+              {errors.email && (
+                <p className="text-red-500 text-start">{errors.email}</p>
+              )}
+            </div>
+            <input
+              type="password"
+              name="password"
+              value={value.password}
+              onChange={handleChange}
+              id=""
+              placeholder="Password"
+              className="border border-black rounded-md py-1 px-2 w-full text-white"
+            />
+            {errors.password && (
+              <p className="text-red-500 text-start">{errors.password}</p>
+            )}
+            <div className="flex justify-center items-center w-full">
+              <button className="bg-black text-white rounded-2xl py-1 px-2 w-full">
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      {/* </div> */}
+    </>
+  );
+}
+
+export default App;
