@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 
-import Login from "./components/login";
+import Login from "./components/Login";
 import "react-toastify/dist/ReactToastify.css";
-import CodeVerification from "./components/codeVerification";
+import CodeVerification from "./components/CodeVerification";
 import { EmailProvider } from "./components/useContext/EmailContext";
 import Homepage from "./components/Homepage";
 import ForgotPassword from "./components/ForgotPassword";
