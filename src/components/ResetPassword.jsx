@@ -23,7 +23,7 @@ const ResetPassword = () => {
       console.log(resetToken);
       axios
         .post(
-          "http://localhost:5000/api/reset-password/" + resetToken,
+          `${import.meta.env.VITE_API_URL}/reset-password/` + resetToken,
           JSON.stringify({ password: ResetPassword }),
           {
             headers: {

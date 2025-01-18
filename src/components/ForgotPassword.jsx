@@ -14,7 +14,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:5000/api/forgot-password",
+        `${import.meta.env.VITE_API_URL}/forgot-password`,
         { email: resetEmail },
         {
           headers: {

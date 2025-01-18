@@ -59,7 +59,7 @@ const CodeVerification = () => {
     e.preventDefault();
     axios
       .post(
-        "http://localhost:5000/api/verify-email",
+        `${import.meta.env.VITE_API_URL}/verify-email`,
         { code: code.join("") },
         {
           headers: {
@@ -82,7 +82,7 @@ const CodeVerification = () => {
   const resend = () => {
     axios
       .post(
-        "http://localhost:5000/api/resend-code",
+        `${import.meta.env.VITE_API_URL}/resend-code`,
         { email },
         {
           headers: {

@@ -57,7 +57,7 @@ const Login = () => {
       });
 
       axios
-        .post("http://localhost:5000/api/login", JSON.stringify(value), {
+        .post(`${import.meta.env.VITE_API_URL}/login`, JSON.stringify(value), {
           headers: {
             "Content-Type": "application/json",
           },
@@ -83,7 +83,7 @@ const Login = () => {
         </div>
 
         {/* right */}
-        <div className=" text-center  md:w-1/3 w-11/12 h-full px-5">
+        <div className=" text-center  md:w-6/12 w-11/12 h-full px-5">
           <div className="flex justify-center items-center">
             <img className="w-10 " src="./icon.png" alt="" />
           </div>
@@ -100,7 +100,7 @@ const Login = () => {
                 value={value.email}
                 id=""
                 placeholder="Email"
-                className="border border-black rounded-md py-1 px-2 w-full text-white"
+                className="border border-black rounded-md py-2 px-4 w-full text-white"
               />
               {errors.email && (
                 <p className="text-red-500 text-start">{errors.email}</p>
@@ -145,7 +145,7 @@ const Login = () => {
             </div>
 
             <div className="flex justify-center items-center w-full">
-              <button className="bg-black text-white rounded-2xl py-1 px-2 w-full">
+              <button className="bg-black text-white rounded-2xl py-2 px-2 w-full hover:scale-105 transform transition-all duration-300">
                 Login
               </button>
             </div>
@@ -170,32 +170,3 @@ const Login = () => {
 };
 
 export default Login;
-
-/*
- <div className=" flex justify-between items-center  rounded-md  px-2 w-full text-white bg-black outline-red border border-black ">
-              <input
-                type={eye ? "text" : "password"}
-                name="password"
-                value={value.password}
-                onChange={handleChange}
-                id=""
-                placeholder="Password"
-                className="w-full  py-2 px-2 text-white outline-none"
-              />
-              <div className="  pr-2">
-                {eye ? (
-                  <FaRegEyeSlash
-                    color="white"
-                    className="cursor-pointer"
-                    onClick={() => setEye(!eye)}
-                  />
-                ) : (
-                  <FaRegEye
-                    color="white"
-                    className="cursor-pointer"
-                    onClick={() => setEye(!eye)}
-                  />
-                )}
-              </div>
-            </div>
-*/

@@ -49,7 +49,7 @@ const Signup = () => {
         password: "",
       });
       axios
-        .post("http://localhost:5000/api/users", JSON.stringify(value), {
+        .post(`${import.meta.env.VITE_API_URL}/users`, JSON.stringify(value), {
           headers: {
             "Content-Type": "application/json",
           },
@@ -74,7 +74,7 @@ const Signup = () => {
         </div>
 
         {/* right */}
-        <div className=" text-center  w-8/12 h-full px-5">
+        <div className=" text-center   md:w-8/12 w-11/12 h-full px-5">
           <div className="flex justify-center items-center">
             <img className="w-10 " src="./icon.png" alt="" />
           </div>
@@ -91,7 +91,7 @@ const Signup = () => {
                 onChange={handleChange}
                 id=""
                 placeholder="Name"
-                className="border border-black rounded-md py-2 px-2 w-full text-white"
+                className="border border-black rounded-md py-2 px-4 w-full text-white"
               />
               {errors.name && (
                 <p className="text-red-500 text-start">{errors.name}</p>
@@ -105,7 +105,7 @@ const Signup = () => {
                 value={value.email}
                 id=""
                 placeholder="Email"
-                className="border border-black rounded-md py-2 px-2 w-full text-white"
+                className="border border-black rounded-md py-2 px-4 w-full text-white"
               />
               {errors.email && (
                 <p className="text-red-500 text-start">{errors.email}</p>
@@ -141,7 +141,7 @@ const Signup = () => {
               <p className="text-red-500 text-start">{errors.password}</p>
             )}
             <div className="flex justify-center items-center w-full">
-              <button className="bg-black text-white rounded-2xl py-1 px-2 w-full">
+              <button className="bg-black text-white rounded-2xl py-2 px-2 w-full hover:scale-105 transform transition-all duration-300">
                 Sign Up
               </button>
             </div>
